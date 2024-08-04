@@ -1,0 +1,13 @@
+gym
+numpy
+pygame
+attrdict
+ray[tune]
+dm_tree
+pandas
+opencv_python
+torch
+tqdm
+
+[mujoco]
+mujoco-py

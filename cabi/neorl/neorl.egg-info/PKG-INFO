@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: neorl
+Version: 0.3.1
+Summary: NeoRL is NEar real-world benchmarks for Offline Reinforcement Learning
+Home-page: https://agit.ai/Polixir/neorl.git
+Requires-Python: >=3.7
+License-File: LICENSE
+Requires-Dist: gym
+Requires-Dist: numpy
+Requires-Dist: pygame
+Requires-Dist: attrdict
+Requires-Dist: ray[tune]
+Requires-Dist: dm_tree
+Requires-Dist: pandas
+Requires-Dist: opencv_python
+Requires-Dist: torch
+Requires-Dist: tqdm
+Provides-Extra: mujoco
+Requires-Dist: mujoco-py; extra == "mujoco"

@@ -24,8 +24,8 @@ Make sure to change the `TASK` and `TASK_d4rlname` using the correct formatting 
 <a id="1">[1]</a>
 [Robust Imitation of a Few Demonstrations with a Backwards Model](https://arxiv.org/abs/2210.09337), Park & Wong, 2022
 
-<a id="1">[2]</a>
+<a id="2">[2]</a>
 [Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor](https://arxiv.org/abs/1801.01290), Haarnoja et al, 2018.
 
-<a id="2">[3]</a>
+<a id="3">[3]</a>
 [Learning Complex Dexterous Manipulation with Deep Reinforcement Learning and Demonstrations](https://arxiv.org/abs/1709.10087), Rajeswaran et al, 2018.

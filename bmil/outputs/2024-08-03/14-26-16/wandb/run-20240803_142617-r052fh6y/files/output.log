@@ -1,0 +1,137 @@
+/usr/local/Caskroom/miniconda/base/envs/mujoco-env/lib/python3.9/site-packages/gym/envs/registration.py:505: UserWarning: [33mWARN: The environment walker2d-random-v0 is out of date. You should consider upgrading to version `v2` with the environment ID `walker2d-random-v2`.
+  logger.warn(
+/usr/local/Caskroom/miniconda/base/envs/mujoco-env/lib/python3.9/site-packages/d4rl/gym_mujoco/gym_envs.py:23: UserWarning: [33mThis environment is deprecated. Please use the most recent version of this environment.
+  offline_env.OfflineEnv.__init__(self, **kwargs)
+/usr/local/Caskroom/miniconda/base/envs/mujoco-env/lib/python3.9/site-packages/gym/spaces/box.py:84: UserWarning: [33mWARN: Box bound precision lowered by casting to float32
+  logger.warn(f"Box bound precision lowered by casting to {self.dtype}")
+load datafile:  20%|██████                        | 1/5 [00:00<00:01,  2.17it/s]
+work_dir: /Users/yanasotirova/Desktop/FINAL_CODE
+seed: 1
+device: cpu
+logger:
+  wandb:
+    _target_: src.logger.WandBLogger
+    entity: null
+    dir: .
+    project: Walker2d
+    name: BMIL_Walker2d_Walker2d_random
+    tags: null
+    id: null
+policy:
+  batch_size: 256
+  train:
+    n_epoch: 1
+    step_per_epoch: 250
+  net:
+    _target_: tianshou.utils.net.common.Net
+    hidden_sizes:
+    - 256
+    - 256
+    - 256
+    device: cpu
+  actor:
+    _target_: tianshou.utils.net.continuous.Actor
+    device: cpu
+  optimizer:
+    _target_: torch.optim.Adam
+    lr: 0.0003
+  bc:
+    _target_: src.policy.bc.BMILPolicy
+    action_scaling: true
+    action_bound_method: clip
+    demo_ratio: 0.95
+dynamics:
+  mode: backward
+  batch_size: 256
+  act_net:
+    _target_: src.dynamics.backward.ProbabilisticNet
+    hidden_sizes:
+    - 256
+    - 256
+    - 256
+    - 256
+    device: cpu
+  obs_net:
+    _target_: src.dynamics.backward.ProbabilisticNet
+    hidden_sizes:
+    - 256
+    - 256
+    - 256
+    - 256
+    device: cpu
+  model:
+    _target_: src.dynamics.backward.BackwardModel
+    bounded_act: true
+    bounded_obs: true
+    update_method: converge
+    obs_delta: true
+    predict_reward: false
+    zero_reward: false
+    use_scaler: false
+    improvement_threshold: 0.001
+    device: cpu
+  optimizer:
+    _target_: torch.optim.Adam
+    lr: 0.001
+    weight_decay: 1.0e-05
+  lr_decay: false
+  n_updates: null
+name: BMIL_Walker2d_Walker2d_random
+method: bmil
+env:
+  agent: Walker2d
+  id: Walker2d_Walker2d_random
+  init: {}
+  wrappers: []
+test:
+  n_envs: 20
+  n_ep: 100
+  env:
+    _target_: tianshou.env.DummyVectorEnv
+    norm_obs: false
+  collector:
+    _target_: src.data.collector.TqdmPosCollector
+eval:
+  n_envs: 20
+  n_ep: 100
+  env:
+    _target_: tianshou.env.ShmemVectorEnv
+    norm_obs: false
+  env_kwargs:
+    reset_noise_scale: 0.1
+  collector:
+    _target_: src.data.collector.TqdmPosCollector
+trace:
+  samples_per_start: 1
+  size_schedule:
+  - 1
+  - 10
+  epoch_schedule:
+  - 100
+  - 1
+  noise_method:
+    mode: entropy
+    max_t: 1
+    scale_coef: 40
+demonstration:
+  n_ep: 20
+  path: /Users/yanasotirova/Desktop/FINAL_CODE/data/Walker2d/body_mass/body_random.hdf5
+  env_name: walker2d-random-v0
+  isMediumExpert: false
+  repeat: 1
+  buffer:
+    _target_: tianshou.data.ReplayBuffer
+    size: 1000000
+env_name_str: walker2d-random-v0
+isMediumExpert: false
+
+load datafile: 100%|██████████████████████████████| 5/5 [00:01<00:00,  2.71it/s]
+---------------------------------
+Not isMediumExpert.
+---------------------------------
+num: 100000
+[2024-08-03 14:26:52,902][__main__][INFO] - Buffer: instantiating buffers
+[2024-08-03 14:29:20,333][__main__][INFO] - Policy: instantiating policy <src.policy.bc.BMILPolicy>
+[2024-08-03 14:29:22,536][__main__][INFO] - Instantiating dynamics model <src.dynamics.backward.BackwardModel>
+Epoch:   0%|                                              | 0/1 [00:00<?, ?it/s]
+[34m[1mwandb[39m[22m: logging graph, to disable use `wandb.watch(log_graph=False)`

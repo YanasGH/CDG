@@ -1,0 +1,45 @@
+{
+    "os": "macOS-10.16-x86_64-i386-64bit",
+    "python": "3.9.18",
+    "heartbeatAt": "2024-08-03T12:26:18.352436",
+    "startedAt": "2024-08-03T12:26:17.599234",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "+experiment=bmil/walker2d_random_v0",
+        "policy.train.n_epoch=1",
+        "device=cpu",
+        "work_dir=/Users/yanasotirova/Desktop/FINAL_CODE",
+        "+env_name_str=walker2d-random-v0",
+        "+isMediumExpert=False"
+    ],
+    "state": "running",
+    "program": "/Users/yanasotirova/Desktop/FINAL_CODE/bmil/experiments/bmil.py",
+    "codePathLocal": null,
+    "host": "Yanas-MacBook-Pro.local",
+    "username": "yanasotirova",
+    "executable": "/usr/local/Caskroom/miniconda/base/envs/mujoco-env/bin/python",
+    "cpu_count": 4,
+    "cpu_count_logical": 8,
+    "cpu_freq": {
+        "current": 1400,
+        "min": 1400,
+        "max": 1400
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1400,
+            "min": 1400,
+            "max": 1400
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 233.46913528442383,
+            "used": 196.2704849243164
+        }
+    },
+    "memory": {
+        "total": 8.0
+    }
+}

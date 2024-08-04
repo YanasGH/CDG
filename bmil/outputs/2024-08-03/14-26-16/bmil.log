@@ -1,0 +1,4 @@
+[2024-08-03 14:26:16,244][__main__][INFO] - Instantiating logger <src.logger.WandBLogger>
+[2024-08-03 14:26:52,902][__main__][INFO] - Buffer: instantiating buffers
+[2024-08-03 14:29:20,333][__main__][INFO] - Policy: instantiating policy <src.policy.bc.BMILPolicy>
+[2024-08-03 14:29:22,536][__main__][INFO] - Instantiating dynamics model <src.dynamics.backward.BackwardModel>

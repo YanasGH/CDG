@@ -1,0 +1,6 @@
+- +experiment=bmil/walker2d_random_v0
+- policy.train.n_epoch=1
+- device=cpu
+- work_dir=/Users/yanasotirova/Desktop/FINAL_CODE
+- +env_name_str=walker2d-random-v0
+- +isMediumExpert=False

@@ -1,0 +1,119 @@
+work_dir: /Users/yanasotirova/Desktop/FINAL_CODE
+seed: 1
+device: cpu
+logger:
+  wandb:
+    _target_: src.logger.WandBLogger
+    entity: null
+    dir: .
+    project: Walker2d
+    name: ${name}
+    tags: null
+    id: null
+policy:
+  batch_size: 256
+  train:
+    n_epoch: 1
+    step_per_epoch: 250
+  net:
+    _target_: tianshou.utils.net.common.Net
+    hidden_sizes:
+    - 256
+    - 256
+    - 256
+    device: ${device}
+  actor:
+    _target_: tianshou.utils.net.continuous.Actor
+    device: ${device}
+  optimizer:
+    _target_: torch.optim.Adam
+    lr: 0.0003
+  bc:
+    _target_: src.policy.bc.BMILPolicy
+    action_scaling: true
+    action_bound_method: clip
+    demo_ratio: 0.95
+dynamics:
+  mode: backward
+  batch_size: ${policy.batch_size}
+  act_net:
+    _target_: src.dynamics.backward.ProbabilisticNet
+    hidden_sizes:
+    - 256
+    - 256
+    - 256
+    - 256
+    device: ${device}
+  obs_net:
+    _target_: src.dynamics.backward.ProbabilisticNet
+    hidden_sizes:
+    - 256
+    - 256
+    - 256
+    - 256
+    device: ${device}
+  model:
+    _target_: src.dynamics.backward.BackwardModel
+    bounded_act: true
+    bounded_obs: true
+    update_method: converge
+    obs_delta: true
+    predict_reward: false
+    zero_reward: false
+    use_scaler: false
+    improvement_threshold: 0.001
+    device: ${device}
+  optimizer:
+    _target_: torch.optim.Adam
+    lr: 0.001
+    weight_decay: 1.0e-05
+  lr_decay: false
+  n_updates: null
+name: BMIL_${env.agent}_Walker2d_random
+method: bmil
+env:
+  agent: Walker2d
+  id: ${.agent}_Walker2d_random
+  init: {}
+  wrappers: []
+test:
+  n_envs: 20
+  n_ep: 100
+  env:
+    _target_: tianshou.env.DummyVectorEnv
+    norm_obs: false
+  collector:
+    _target_: src.data.collector.TqdmPosCollector
+eval:
+  n_envs: 20
+  n_ep: 100
+  env:
+    _target_: tianshou.env.ShmemVectorEnv
+    norm_obs: ${test.env.norm_obs}
+  env_kwargs:
+    reset_noise_scale: 0.1
+  collector:
+    _target_: src.data.collector.TqdmPosCollector
+trace:
+  samples_per_start: 1
+  size_schedule:
+  - 1
+  - 10
+  epoch_schedule:
+  - 100
+  - ${policy.train.n_epoch}
+  noise_method:
+    mode: entropy
+    max_t: 1
+    scale_coef: 40
+demonstration:
+  n_ep: 20
+  path: ${work_dir}/data/Walker2d/body_mass/body_random.hdf5
+  env_name: ${env_name_str}
+  isMediumExpert: ${isMediumExpert}
+  repeat: 1
+  buffer:
+    _target_: tianshou.data.ReplayBuffer
+    size: 1000000
+env_name_str: walker2d-random-v0
+isMediumExpert: false

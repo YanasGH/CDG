@@ -1,0 +1,192 @@
+wandb_version: 1
+
+work_dir:
+  desc: null
+  value: /Users/yanasotirova/Desktop/FINAL_CODE
+seed:
+  desc: null
+  value: 1
+device:
+  desc: null
+  value: cpu
+logger:
+  desc: null
+  value:
+    wandb:
+      _target_: src.logger.WandBLogger
+      entity: null
+      dir: .
+      project: Walker2d
+      name: BMIL_Walker2d_Walker2d_random
+      tags: null
+      id: null
+policy:
+  desc: null
+  value:
+    batch_size: 256
+    train:
+      n_epoch: 1
+      step_per_epoch: 250
+    net:
+      _target_: tianshou.utils.net.common.Net
+      hidden_sizes:
+      - 256
+      - 256
+      - 256
+      device: cpu
+    actor:
+      _target_: tianshou.utils.net.continuous.Actor
+      device: cpu
+    optimizer:
+      _target_: torch.optim.Adam
+      lr: 0.0003
+    bc:
+      _target_: src.policy.bc.BMILPolicy
+      action_scaling: true
+      action_bound_method: clip
+      demo_ratio: 0.95
+dynamics:
+  desc: null
+  value:
+    mode: backward
+    batch_size: 256
+    act_net:
+      _target_: src.dynamics.backward.ProbabilisticNet
+      hidden_sizes:
+      - 256
+      - 256
+      - 256
+      - 256
+      device: cpu
+    obs_net:
+      _target_: src.dynamics.backward.ProbabilisticNet
+      hidden_sizes:
+      - 256
+      - 256
+      - 256
+      - 256
+      device: cpu
+    model:
+      _target_: src.dynamics.backward.BackwardModel
+      bounded_act: true
+      bounded_obs: true
+      update_method: converge
+      obs_delta: true
+      predict_reward: false
+      zero_reward: false
+      use_scaler: false
+      improvement_threshold: 0.001
+      device: cpu
+    optimizer:
+      _target_: torch.optim.Adam
+      lr: 0.001
+      weight_decay: 1.0e-05
+    lr_decay: false
+    n_updates: null
+name:
+  desc: null
+  value: BMIL_Walker2d_Walker2d_random
+method:
+  desc: null
+  value: bmil
+env:
+  desc: null
+  value:
+    agent: Walker2d
+    id: Walker2d_Walker2d_random
+    init: {}
+    wrappers: []
+test:
+  desc: null
+  value:
+    n_envs: 20
+    n_ep: 100
+    env:
+      _target_: tianshou.env.DummyVectorEnv
+      norm_obs: false
+    collector:
+      _target_: src.data.collector.TqdmPosCollector
+eval:
+  desc: null
+  value:
+    n_envs: 20
+    n_ep: 100
+    env:
+      _target_: tianshou.env.ShmemVectorEnv
+      norm_obs: false
+    env_kwargs:
+      reset_noise_scale: 0.1
+    collector:
+      _target_: src.data.collector.TqdmPosCollector
+trace:
+  desc: null
+  value:
+    samples_per_start: 1
+    size_schedule:
+    - 1
+    - 10
+    epoch_schedule:
+    - 100
+    - 1
+    noise_method:
+      mode: entropy
+      max_t: 1
+      scale_coef: 40
+demonstration:
+  desc: null
+  value:
+    n_ep: 20
+    path: /Users/yanasotirova/Desktop/FINAL_CODE/data/Walker2d/body_mass/body_random.hdf5
+    env_name: walker2d-random-v0
+    isMediumExpert: false
+    repeat: 1
+    buffer:
+      _target_: tianshou.data.ReplayBuffer
+      size: 1000000
+env_name_str:
+  desc: null
+  value: walker2d-random-v0
+isMediumExpert:
+  desc: null
+  value: false
+_wandb:
+  desc: null
+  value:
+    python_version: 3.9.18
+    cli_version: 0.16.4
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1722687977.0
+    t:
+      1:
+      - 1
+      - 2
+      - 3
+      - 30
+      - 50
+      - 55
+      2:
+      - 1
+      - 2
+      - 3
+      - 30
+      - 50
+      - 55
+      3:
+      - 1
+      - 13
+      - 16
+      - 19
+      - 23
+      4: 3.9.18
+      5: 0.16.4
+      8:
+      - 5
+      13: darwin-x86_64
+save_path:
+  desc: null
+  value: /Users/yanasotirova/Desktop/FINAL_CODE/bmil/outputs/2024-08-03/14-26-16/wandb/run-20240803_142617-r052fh6y/files
+id:
+  desc: null
+  value: r052fh6y

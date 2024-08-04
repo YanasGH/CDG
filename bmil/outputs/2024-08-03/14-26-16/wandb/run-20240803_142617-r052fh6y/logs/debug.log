@@ -1,0 +1,34 @@
+2024-08-03 14:26:17,605 INFO    MainThread:26676 [wandb_setup.py:_flush():76] Current SDK version is 0.16.4
+2024-08-03 14:26:17,605 INFO    MainThread:26676 [wandb_setup.py:_flush():76] Configure stats pid to 26676
+2024-08-03 14:26:17,605 INFO    MainThread:26676 [wandb_setup.py:_flush():76] Loading settings from /Users/yanasotirova/.config/wandb/settings
+2024-08-03 14:26:17,605 INFO    MainThread:26676 [wandb_setup.py:_flush():76] Loading settings from /Users/yanasotirova/Desktop/FINAL_CODE/bmil/outputs/2024-08-03/14-26-16/wandb/settings
+2024-08-03 14:26:17,605 INFO    MainThread:26676 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-08-03 14:26:17,606 INFO    MainThread:26676 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-08-03 14:26:17,606 WARNING MainThread:26676 [wandb_setup.py:_flush():76] Could not save program above cwd: /Users/yanasotirova/Desktop/FINAL_CODE/bmil/experiments/bmil.py
+2024-08-03 14:26:17,606 INFO    MainThread:26676 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': None, 'program_abspath': '/Users/yanasotirova/Desktop/FINAL_CODE/bmil/experiments/bmil.py', 'program': '/Users/yanasotirova/Desktop/FINAL_CODE/bmil/experiments/bmil.py'}
+2024-08-03 14:26:17,606 INFO    MainThread:26676 [wandb_init.py:_log_setup():526] Logging user logs to ./wandb/run-20240803_142617-r052fh6y/logs/debug.log
+2024-08-03 14:26:17,606 INFO    MainThread:26676 [wandb_init.py:_log_setup():527] Logging internal logs to ./wandb/run-20240803_142617-r052fh6y/logs/debug-internal.log
+2024-08-03 14:26:17,606 INFO    MainThread:26676 [wandb_init.py:init():566] calling init triggers
+2024-08-03 14:26:17,606 INFO    MainThread:26676 [wandb_init.py:init():573] wandb.init called with sweep_config: {}
+config: {'work_dir': '/Users/yanasotirova/Desktop/FINAL_CODE', 'seed': 1, 'device': 'cpu', 'logger': {'wandb': {'_target_': 'src.logger.WandBLogger', 'entity': None, 'dir': '.', 'project': 'Walker2d', 'name': 'BMIL_Walker2d_Walker2d_random', 'tags': None, 'id': None}}, 'policy': {'batch_size': 256, 'train': {'n_epoch': 1, 'step_per_epoch': 250}, 'net': {'_target_': 'tianshou.utils.net.common.Net', 'hidden_sizes': [256, 256, 256], 'device': 'cpu'}, 'actor': {'_target_': 'tianshou.utils.net.continuous.Actor', 'device': 'cpu'}, 'optimizer': {'_target_': 'torch.optim.Adam', 'lr': 0.0003}, 'bc': {'_target_': 'src.policy.bc.BMILPolicy', 'action_scaling': True, 'action_bound_method': 'clip', 'demo_ratio': 0.95}}, 'dynamics': {'mode': 'backward', 'batch_size': 256, 'act_net': {'_target_': 'src.dynamics.backward.ProbabilisticNet', 'hidden_sizes': [256, 256, 256, 256], 'device': 'cpu'}, 'obs_net': {'_target_': 'src.dynamics.backward.ProbabilisticNet', 'hidden_sizes': [256, 256, 256, 256], 'device': 'cpu'}, 'model': {'_target_': 'src.dynamics.backward.BackwardModel', 'bounded_act': True, 'bounded_obs': True, 'update_method': 'converge', 'obs_delta': True, 'predict_reward': False, 'zero_reward': False, 'use_scaler': False, 'improvement_threshold': 0.001, 'device': 'cpu'}, 'optimizer': {'_target_': 'torch.optim.Adam', 'lr': 0.001, 'weight_decay': 1e-05}, 'lr_decay': False, 'n_updates': None}, 'name': 'BMIL_Walker2d_Walker2d_random', 'method': 'bmil', 'env': {'agent': 'Walker2d', 'id': 'Walker2d_Walker2d_random', 'init': {}, 'wrappers': []}, 'test': {'n_envs': 20, 'n_ep': 100, 'env': {'_target_': 'tianshou.env.DummyVectorEnv', 'norm_obs': False}, 'collector': {'_target_': 'src.data.collector.TqdmPosCollector'}}, 'eval': {'n_envs': 20, 'n_ep': 100, 'env': {'_target_': 'tianshou.env.ShmemVectorEnv', 'norm_obs': False}, 'env_kwargs': {'reset_noise_scale': 0.1}, 'collector': {'_target_': 'src.data.collector.TqdmPosCollector'}}, 'trace': {'samples_per_start': 1, 'size_schedule': [1, 10], 'epoch_schedule': [100, 1], 'noise_method': {'mode': 'entropy', 'max_t': 1, 'scale_coef': 40}}, 'demonstration': {'n_ep': 20, 'path': '/Users/yanasotirova/Desktop/FINAL_CODE/data/Walker2d/body_mass/body_random.hdf5', 'env_name': 'walker2d-random-v0', 'isMediumExpert': False, 'repeat': 1, 'buffer': {'_target_': 'tianshou.data.ReplayBuffer', 'size': 1000000}}, 'env_name_str': 'walker2d-random-v0', 'isMediumExpert': False}
+2024-08-03 14:26:17,606 INFO    MainThread:26676 [wandb_init.py:init():616] starting backend
+2024-08-03 14:26:17,607 INFO    MainThread:26676 [wandb_init.py:init():620] setting up manager
+2024-08-03 14:26:17,609 INFO    MainThread:26676 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2024-08-03 14:26:17,612 INFO    MainThread:26676 [wandb_init.py:init():628] backend started and connected
+2024-08-03 14:26:17,623 INFO    MainThread:26676 [wandb_init.py:init():720] updated telemetry
+2024-08-03 14:26:17,625 INFO    MainThread:26676 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-08-03 14:26:18,111 INFO    MainThread:26676 [wandb_run.py:_on_init():2262] communicating current version
+2024-08-03 14:26:18,336 INFO    MainThread:26676 [wandb_run.py:_on_init():2271] got version response upgrade_message: "wandb version 0.17.5 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-08-03 14:26:18,336 INFO    MainThread:26676 [wandb_init.py:init():804] starting run threads in backend
+2024-08-03 14:26:39,197 INFO    MainThread:26676 [wandb_run.py:_console_start():2241] atexit reg
+2024-08-03 14:26:39,198 INFO    MainThread:26676 [wandb_run.py:_redirect():2096] redirect: wrap_raw
+2024-08-03 14:26:39,203 INFO    MainThread:26676 [wandb_run.py:_redirect():2161] Wrapping output streams.
+2024-08-03 14:26:39,203 INFO    MainThread:26676 [wandb_run.py:_redirect():2186] Redirects installed.
+2024-08-03 14:26:39,206 INFO    MainThread:26676 [wandb_init.py:init():847] run started, returning control to user process
+2024-08-03 14:26:39,210 INFO    MainThread:26676 [wandb_config.py:__setitem__():151] config set save_path = /Users/yanasotirova/Desktop/FINAL_CODE/bmil/outputs/2024-08-03/14-26-16/wandb/run-20240803_142617-r052fh6y/files - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7f8cf1e9f760>>
+2024-08-03 14:26:39,210 INFO    MainThread:26676 [wandb_run.py:_config_callback():1343] config_cb save_path /Users/yanasotirova/Desktop/FINAL_CODE/bmil/outputs/2024-08-03/14-26-16/wandb/run-20240803_142617-r052fh6y/files None
+2024-08-03 14:26:39,211 INFO    MainThread:26676 [wandb_config.py:__setitem__():151] config set id = r052fh6y - <bound method Run._config_callback of <wandb.sdk.wandb_run.Run object at 0x7f8cf1e9f760>>
+2024-08-03 14:26:39,211 INFO    MainThread:26676 [wandb_run.py:_config_callback():1343] config_cb id r052fh6y None
+2024-08-03 14:29:22,535 INFO    MainThread:26676 [wandb_watch.py:watch():51] Watching
+2024-08-03 14:29:22,598 INFO    MainThread:26676 [wandb_watch.py:watch():51] Watching

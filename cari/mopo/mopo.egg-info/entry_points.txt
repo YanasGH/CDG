@@ -1,0 +1,3 @@
+[console_scripts]
+mopo = softlearning.scripts.console_scripts:main
+viskit = mopo.scripts.console_scripts:main

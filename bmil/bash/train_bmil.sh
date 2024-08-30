@@ -3,7 +3,7 @@
 export PYTHONPATH="${PYTHONPATH}:./.local/lib/python3.10/site-packages"
 
 cd
-cd /Users/yanasotirova/Desktop/FINAL_CODE/bmil
+cd ...
 
 DEVICE="cpu"
 METHOD="bmil"
@@ -11,7 +11,7 @@ TASK="walker2d_random_v0"
 TASK_d4rlname="walker2d-random-v0"
 isMediumExpert=False
 
-WANDB_API_KEY="6fef0087d8bfd6d2015efa19ca9268115a2c26ef"
+WANDB_API_KEY="..."
 wandb login "$WANDB_API_KEY"
 
 CMD=(python -u experiments/"${METHOD}".py

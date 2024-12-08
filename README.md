@@ -1,7 +1,7 @@
 # Cross-Domain Generalization with Reverse Dynamics Models in Offline Model-Based Reinforcement Learning
 
 Code for the paper "Cross-Domain Generalization with Reverse Dynamics Models in Offline Model-Based Reinforcement Learning".
-Each folder contains the code for the baselines BMIL ([Park & Wong, 2022][https://arxiv.org/abs/2210.09337]), CABI [Lyu et al, 2022][https://proceedings.neurips.cc/paper_files/paper/2022/file/f9e2800a251fa9107a008104f47c45d1-Paper-Conference.pdf], and ROMI ([Wang et al, 2022][https://arxiv.org/pdf/2110.00188]), as well as the newly proposed method, CARI, which is largely based on ROMI.
+Each folder contains the code for the baselines BMIL ([Park & Wong, 2022](https://arxiv.org/abs/2210.09337)), CABI [Lyu et al, 2022](https://proceedings.neurips.cc/paper_files/paper/2022/file/f9e2800a251fa9107a008104f47c45d1-Paper-Conference.pdf), and ROMI ([Wang et al, 2022](https://arxiv.org/pdf/2110.00188)), as well as the newly proposed method, CARI, which is largely based on ROMI.
 Each folder contains the instructions how to run the respective method in the README file.
 
 ## Installation

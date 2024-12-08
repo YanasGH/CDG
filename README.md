@@ -1,7 +1,7 @@
 # Cross-Domain Generalization with Reverse Dynamics Models in Offline Model-Based Reinforcement Learning
 
 Code for the paper "Cross-Domain Generalization with Reverse Dynamics Models in Offline Model-Based Reinforcement Learning".
-Each folder contains the code for the baselines BMIL, CABI, and ROMI, as well as the newly proposed method, CARI.
+Each folder contains the code for the baselines BMIL, CABI, and ROMI, as well as the newly proposed method, CARI, which is largely based on ROMI.
 Each folder contains the instructions how to run the respective method in the README file.
 
 ## Installation
